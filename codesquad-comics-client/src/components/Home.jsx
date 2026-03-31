@@ -1,0 +1,128 @@
+import books from '../data/books';
+
+
+
+
+
+function Home() {
+    return (
+        <div>
+            <main>
+               <h2>CODESQUAD COMICS</h2>
+    <p>CodeSquad Comics is a collection of graphic novels read by Jacqui Hudson-Underwood. The side is intended to display comic book covers along with information about each book, including the author, a rating, and other details about the graphic novel. Browse through the complete collection below. Click on the cover image or the Details link to see even more information for each graphic novel including the publisher, genre, number of pages, and a brief synopsis. The About page includes meta information about this collection. Login is only available to the site administrator at this time.</p>
+    <h2>COMPLETE COMIC COLLECTION</h2>
+    <div>
+        {books.map((book) => (
+            <>
+        <figure role="group"><a href="#"><img src={`./images/${book.imageUrl}`} alt={`${book.title} cover`} width="200px" /></a>
+        <figcaption><em>{book.title}</em><br />
+        by {book.author}<br />
+        {book.rating} stars<br />
+        <a href="#">{book.synopsis}</a>
+        </figcaption>
+        </figure>
+        </>
+        ))
+}
+    </div>
+{/* <figure role="group"><a href="#"><img src="public/images/watchmen.jpg" alt="" /></a>
+    <figcaption><em>Watchmen</em><br />
+    by Alan Moore<br />
+    5 stars<br />
+    <a href="#">Details</a>
+</figcaption>
+</figure>
+
+
+<figure role="group"><a href="#"><img src="public/images/hunter-x-hunter.jpg" alt="" /></a>
+    <figcaption><em>Hunter X Hunter, Vol. 1</em><br />
+    by Yoshihiro Togashi<br />
+    5 stars<br />
+    <a href="#">Details</a>
+</figcaption>
+</figure>
+
+
+<figure role="group"><a href="#"><img src="public/images/lumberjanes.jpg" alt="" /></a>
+    <figcaption><em>LumberJanes, Vol. 1</em><br />
+    by Noelle Stevenson<br />
+    4 stars<br />
+    <a href="#">Details</a>
+</figcaption>
+</figure>
+
+
+<figure role="group"><a href="#"></a><img src="public/images/one-piece.jpg" alt="" />
+    <figcaption><em>One Piece, Vol. 1: Romance Dawn</em><br />
+    by Eiichiro Oda<br />
+    5 stars<br />
+    <a href="#">Details</a>
+</figcaption>
+</figure>
+<figure role="group"><a href="#"><img src="public/images/wake.jpg" alt="" /></a>
+    <figcaption><em>Wake: The Hidden History of Women-Led Slave Revolts</em><br />
+    by Rebecca Hall<br />
+    4 stars<br />
+    <a href="#">Details</a>
+</figcaption>
+</figure>
+
+<figure role="group"><a href="#"><img src="public/images/black-panther.jpg" alt="" /></a>
+    <figcaption><em>Black Panther: A Nation Under Our Feet, Book 1</em><br />
+    by Ta-Nehisi Coates<br />
+    3 stars<br />
+    <a href="#">Details</a>
+</figcaption>
+</figure>
+
+
+<figure role="group"><a href="#"><img src="public/images/the-walking-dead.jpg" alt="" /></a>
+    <figcaption><em>The Walking Dead, Vol. 1: Days Gone Bye</em><br />
+    by Robert Kirkman<br />
+    4 stars<br />
+    <a href="#">Details</a>
+</figcaption>
+</figure>
+
+
+<figure role="group"><a href="#"><img src="public/images/march.jpg" alt="" /></a>
+    <figcaption><em>March: Book One</em><br />
+    by John Lewis<br />
+    5 stars<br />
+    <a href="#">Details</a>
+</figcaption>
+</figure>
+
+
+<figure role="group"><a href="#"><img src="public/images/batman.jpg" alt="" /></a>
+    <figcaption><em>Batman: The Dark Knight Returns</em><br />
+    by Frank Miller<br />
+    3 stars<br />
+    <a href="#">Details</a>
+</figcaption>
+</figure>
+
+
+<figure role="group"><a href="#"><img src="public/images/queer.jpg" alt="" /></a>
+    <figcaption><em>Queer: A Graphic History</em><br />
+    by Meg-John Barker<br />
+    4 stars<br />
+    <a href="#">Details</a>
+</figcaption>
+</figure>
+
+
+<figure role="group"><a href="#"><img src="public/images/parable-of-the-sower.jpg" alt="" /></a>
+    <figcaption><em>Parable of the Sower</em><br />
+    by Octavia E. Butler<br />
+    4 stars<br />
+    <a href="#">Details</a>
+</figcaption>
+</figure> */}
+<button>DISPLAY MORE</button>
+            </main>
+        </div>
+    );
+}
+
+export default  Home;

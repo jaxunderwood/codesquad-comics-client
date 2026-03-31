@@ -1,0 +1,44 @@
+function Create() {
+    return (
+        <div>
+            <main>
+     <h1>CREATE NEW COMIC</h1>
+    <form>
+        <label htmlFor="booktitle">Title:</label>
+        <input type="text" id="booktitle" name="booktitle" placeholder="Title" /><br />
+
+        <label htmlFor="bookauthor">Author:</label>
+        <input type="text" id="bookauthor" name="bookauthor" placeholder="Author" /><br />
+
+        <label htmlFor="bookpublisher">Publisher:</label>
+        <select id="bookpublisher" name="bookpublisher">
+            <option value="Select" selected disabled>Select</option>
+            <option value="BOOM! Box">BOOM! Box</option>
+            <option value="DC Comics">DC Comics</option>
+            <option value="Harry N. Abrams">Harry N. Abrams</option>
+            <option value="Icon Books">Icon Books</option>
+            <option value="Image Comics">Image Comics</option>
+            <option value="Marvel">Marvel</option>
+            <option value="Simon & Schuster">Simon & Schuster</option>
+            <option value="Top Shelf Productions">Top Shelf Productions</option>
+            <option value="VIZ Media LLC">VIZ Media LLC</option>
+        </select><br />
+        <label htmlFor="bookgenre">Genre:</label>
+        <input type="text" id="bookgenre" name="bookgenre" placeholder="Genre" /><br />
+
+        <label htmlFor="pagecount">Nunber of Pages:</label>
+        <input type="number" id="pagecount" name="pagecount" placeholder="Number of pages" /><br />
+
+        <label htmlFor="bookrating">Rating:</label>
+        <input type="number" min="1" max="5"  id="bookrating" name="bookrating" placeholder="" /><br />
+
+        <label htmlFor="bookgenre">Synopsis:</label>
+        <input type="text" id="bookgenre" name="bookgenre" placeholder="Synopsis" /><br />
+    <input type="submit" value="Submit" />
+</form>
+            </main>
+        </div>
+    );
+}
+
+export default Create;
