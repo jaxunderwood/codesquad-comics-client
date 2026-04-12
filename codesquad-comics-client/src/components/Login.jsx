@@ -1,8 +1,10 @@
+import PropTypes from 'prop-types'
+
 function Login() {
     return (
         <div>
             <main>
-            <div class="container">
+            <div className="container">
             <h1>LOGIN</h1>
                 <form>
                     <label htmlFor="emailaddy">Email address:</label>

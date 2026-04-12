@@ -1,10 +1,16 @@
 import books from '../data/books';
-
+import { useState, useEffect } from 'react';
 
 
 
 
 function Home() {
+    const [books, setbooks] = useState([]);
+  useEffect(() => {setbooks(books);
+
+        }, []);
+
+
     return (
         <div>
             <main>
@@ -13,15 +19,14 @@ function Home() {
     <h2>COMPLETE COMIC COLLECTION</h2>
     <div>
         {books.map((book) => (
-            <>
-        <figure role="group"><a href="#"><img src={`./images/${book.imageUrl}`} alt={`${book.title} cover`} width="200px" /></a>
+
+        <figure key={book.id} role="group"><a href="#"><img src={`./images/${book.imageUrl}`} alt={`${book.title} cover`} width="200px" /></a>
         <figcaption><em>{book.title}</em><br />
         by {book.author}<br />
         {book.rating} stars<br />
         <a href="#">{book.synopsis}</a>
         </figcaption>
         </figure>
-        </>
         ))
 }
     </div>

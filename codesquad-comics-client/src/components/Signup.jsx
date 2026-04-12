@@ -1,10 +1,22 @@
+import PropTypes from 'prop-types'
+
 function Signup() {
+ const handleSubmit = (e) => {
+		e.preventDefault()
+    console.log("Signup processed")
+    console.log("First Name:", e.target.firstName.value);
+    console.log("Last Name:", e.target.lastName.value);
+    console.log("Last Name:", e.target.lastName.value);
+    console.log("Password:", e.target.password.value);
+
+ }
+
     return (
         <div>
         <main>
-            <div class="container">
-            <h1>LOGIN</h1>
-                <form>
+            <div className="container">
+            <h1>SIGNUP</h1>
+                <form onChange={handleSubmit}>
                         <label htmlFor="firstName">First Name:</label>
                     <input type="text" id="firstName" name="firstName" placeholder="First Name" /><br />
 

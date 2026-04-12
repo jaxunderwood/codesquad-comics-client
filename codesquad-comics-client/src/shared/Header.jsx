@@ -1,9 +1,9 @@
+import PropTypes from 'prop-types'
 
 
-
-function Header() {
+function Header(prop) {
   return (
-    <div>Header
+    <div>
     <header>
         <figure><a href="#"><img src="public/images/CodeSquad-Comics-logo.jpg" /></a></figure>
     <ul>

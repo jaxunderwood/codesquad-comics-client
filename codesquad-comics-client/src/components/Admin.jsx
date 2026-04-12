@@ -1,14 +1,20 @@
- import books from '../data/books';
+import booksData from '../data/books';
+import { useState, useEffect } from 'react';
 
 
 
 
  function Admin() {
+        const [books, setBooks] = useState([]);
+        useEffect(() => {setBooks(booksData);
+        }, []);
+
+
     return (
         <div>
         <main>
-        <div class="container">
-        <div class="table_flex">
+        <div className="container">
+        <div className="table_flex">
            <h1>ADMIN PAGE</h1>
     <button>ADD NEW COMIC</button>
     <table>
@@ -21,7 +27,7 @@
         </thead>
         <tbody>
             {books.map((book)=> (
-            <tr>
+            <tr key={book.id}>
                 <td>{book.title}</td>
                 <td><button>Edit</button></td>
                 <td><button>DELETE</button></td>
