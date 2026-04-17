@@ -1,23 +1,38 @@
 import booksData from '../data/books';
 import { useState, useEffect } from 'react';
+import { useParams, useNavigate } from "react-router-dom";
 
 
 
 function Update() {
-    const id = "402993dd-ea02-4ff1-b60e-4501d6d4caf7";
+    const navigate = useNavigate();
+    const { bookId } = useParams();
     const [book, setBook] = useState({});
 
-   useEffect(() => {
-        const foundBook = booksData.find((b) => b.id === id);
-        // if the book is found, update the object to the foundbook
-            if (foundBook) {
-                //set the found book as our entry and re-render that information
-            setBook(foundBook);
- }
-    }, []);
+    useEffect(() => {
+        fetch(`https://course-project-codesquad-comics-server.onrender.com/api/books/${bookId}`)
+            .then((response) => response.json())
+            .then((data) => {
+                console.log("Here's you book", data);
+                setBook(data);
+            })
+            .catch((error) => console.log("Fetch error:", error));
+
+    }, [bookId]);
+
+
 
     const handleSubmit = (e) => {
-        e.preventDefault();
+        e.preventDefault()
+        const body = {
+            title: e.target.booktitle.value,
+            author: e.target.bookauthor.value,
+            publisher: e.target.bookpublisher.value,
+            genre: e.target.bookgenre.value,
+            pages: e.target.pagecount.value,
+            rating: e.target.bookrating.value,
+            synopsis: e.target.booksynopsis.value
+        }
         console.log("Title:", e.target.booktitle.value);
         console.log("Author:", e.target.bookauthor.value);
         console.log("Publisher:", e.target.bookpublisher.value);
@@ -25,22 +40,38 @@ function Update() {
         console.log("Pages:", e.target.pagecount.value);
         console.log("Rating:", e.target.bookrating.value);
         console.log("Update:", book);
+
+
+        fetch(`https://course-project-codesquad-comics-server.onrender.com/api/books/edit/${bookId}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(body),
+        })
+            .then((response) => response.json())
+            .then((result) => {
+                console.log("Success updating record:", result);
+                setBook(result);
+                navigate("/admin");
+            })
+            .catch((error) => console.log("Update error message:", error));
     };
 
     return (
         <div>
             <main>
-            <div className="container">
-                <h1>Update Comic</h1>
+                <div className="container">
+                    <h1>Update Comic</h1>
                     <form onSubmit={handleSubmit}>
                         <label htmlFor="booktitle">Title:</label>
                         <input type="text" id="booktitle" name="booktitle" defaultValue={book.title} required /><br />
 
                         <label htmlFor="bookauthor">Author:</label>
-                        <input type="text" id="bookauthor" name="bookauthor" defaultValue={book.author} required  /><br />
+                        <input type="text" id="bookauthor" name="bookauthor" defaultValue={book.author} required /><br />
 
                         <label htmlFor="bookpublisher">Publisher:</label>
-                        <select id="bookpublisher" name="bookpublisher" required  defaultValue={book.publisher}>
+                        <select id="bookpublisher" name="bookpublisher" required defaultValue={book.publisher}>
                             <option>publisher value stored in database</option>
                             <option value="BOOM! Box">BOOM! Box</option>
                             <option value="DC Comics">DC Comics</option>
@@ -71,4 +102,4 @@ function Update() {
     );
 }
 
-export default  Update;
+export default Update;

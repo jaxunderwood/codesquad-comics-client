@@ -4,36 +4,50 @@ import { useState, useEffect } from 'react';
 
 
 
- function Admin() {
-        const [books, setBooks] = useState([]);
-        useEffect(() => {setBooks(booksData);
-        }, []);
+function Admin() {
+    const [books, setBooks] = useState([]);
+    useEffect((bookId) => {
+        fetch(`https://course-project-codesquad-comics-server.onrender.com/api/books/${id}`, {
+            method: 'DELETE',
+        })
+            .then((response) => response.json())
+            .then((result) => console.log("You have successfully deleted a record"))
+            .catch((error) => console.log("Here is your error:", error));
+    }, []);
 
+    useEffect(() => {
+        fetch("https://course-project-codesquad-comics-server.onrender.com/api/books")
+            .then((response) => response.json())
+            .then((data) => setBooks(data))
+            .catch((error) => console.log("Fetch error:", error));
+    }, []);
 
     return (
         <div>
-        <main>
-        <div className="container">
-        <div className="table_flex">
-           <h1>ADMIN PAGE</h1>
-    <button>ADD NEW COMIC</button>
-    <table>
-        <thead>
-        <tr>
-            <th>COMIC TITLE</th>
-            <th>EDIT</th>
-            <th>DELETE</th>
-        </tr>
-        </thead>
-        <tbody>
-            {books.map((book)=> (
-            <tr key={book.id}>
-                <td>{book.title}</td>
-                <td><button>Edit</button></td>
-                <td><button>DELETE</button></td>
-            </tr>
-            ))}
-            {/* <tr>
+            <main>
+                <div className="container">
+                    <div className="table_flex">
+                        <h1>ADMIN PAGE</h1>
+                        <button>ADD NEW COMIC</button>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>COMIC TITLE</th>
+                                    <th>EDIT</th>
+                                    <th>DELETE</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {books.map((book) => (
+                                    <tr key={book.id}>
+                                        <td>{book.title}</td>
+                                        <td><button>Edit</button></td>
+                                        <td><button onClick={() => handleDelete(book.id)}>
+                                            DELETE
+                                        </button></td>
+                                    </tr>
+                                ))}
+                                {/* <tr>
                 <td>Black Panther: A Nation Under Our Feet Book 1</td>
                 <td><button>EDIT</button></td>
                 <td><button>DELETE</button></td>
@@ -88,10 +102,10 @@ import { useState, useEffect } from 'react';
                 <td><button>EDIT</button></td>
                 <td><button>DELETE</button></td>
             </tr> */}
-        </tbody>
-    </table>
-    </div>
-    </div>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </main>
         </div>
     );
